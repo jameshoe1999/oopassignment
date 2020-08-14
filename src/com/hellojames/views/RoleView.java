@@ -2,34 +2,38 @@ package com.hellojames.views;
 
 import com.hellojames.components.MyTableView;
 import com.hellojames.roles.Role;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import com.hellojames.seeders.DoctorSeeder;
+import com.hellojames.seeders.PatientSeeder;
+import com.hellojames.seeders.Seeder;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableView;
 
 import java.util.List;
 
 public class RoleView {
 
-    List<Role> roles;
-    String[] columns;
+    public TabPane render() {
+        TabPane tabPane = new TabPane();
+        Tab doctors = new Tab("Doctors", new Label("All doctors"));
+        Tab patients = new Tab("Patients", new Label("All patient"));
+        doctors.setClosable(false);
+        doctors.setContent(renderTableView(new DoctorSeeder(), new String[] {
+                "id", "name", "specialist", "workTime", "qualification", "room"
+        }));
+        patients.setClosable(false);
+        patients.setContent(renderTableView(new PatientSeeder(), new String[] {
+                "id", "name", "gender", "age", "disease", "admitStatus"
+        }));
 
-    public RoleView(List<Role> roles) {
-        this.roles = roles;
+        tabPane.getTabs().addAll(doctors, patients);
+        return tabPane;
     }
 
-    public RoleView(List<Role> roles, String[] columns) {
-        this.roles = roles;
-        this.columns = columns;
-    }
-
-    public void setColumns(String[] columns) {
-        this.columns = columns;
-    }
-
-    public Scene render() {
+    public TableView renderTableView(Seeder seeder, String[] columns) {
+        List<Role> roles = seeder.seed();
         MyTableView myTableView = new MyTableView();
-        VBox vbox = new VBox(myTableView.render(columns, roles));
-        return new Scene(vbox);
+        return myTableView.render(columns, roles);
     }
 }
