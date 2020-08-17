@@ -86,9 +86,14 @@ public class Patient implements Role {
 
     @Override
     public void showRoleInfo() {
-        System.out.printf("ID\t\t: %d\n" + "Name\t: %s\n" + "Gender\t: %s\n" +
-                        "Age\t\t: %d\n" + "Disease\t: %s\n" + "Status\t: %s\n",
+        System.out.printf("%d\t%s\t\t%s\t\t%d\t\t%s\t\t%s\n",
                 id, name, gender, age, disease, admitStatus);
+    }
+
+    @Override
+    public void showRoleProperties() {
+        System.out.print("-------------------- Patients Menu --------------------\n");
+        System.out.print("ID\tName\t\tGender\t\tAge\t\tDisease\t\t\tAdmit Status\n");
     }
 
     @Override

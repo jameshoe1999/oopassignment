@@ -72,9 +72,14 @@ public class Doctor implements Role {
 
     @Override
     public void showRoleInfo() {
-        System.out.printf("ID\t\t\t\t: %d\n" + "Name\t\t\t: %s\n" + "Specialist\t\t: %s\n" +
-                "Working Hour\t: %s\n" + "Qualification\t: %s\n" + "Room No.\t\t: %d\n",
+        System.out.printf("%d\t%s\t\t%s\t\t%s\t\t%s\t\t%d\n",
                 id, name, specialist, workTime, qualification, room);
+    }
+
+    @Override
+    public void showRoleProperties() {
+        System.out.print("-------------------- Doctors Menu --------------------\n");
+        System.out.print("ID\tName\t\tSpecialist\t\tQualification\t\tWorking Hour\tRoom No.\n");
     }
 
     @Override

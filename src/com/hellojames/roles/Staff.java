@@ -59,9 +59,14 @@ public class Staff implements Role {
 
     @Override
     public void showRoleInfo() {
-        System.out.printf("ID\t\t: %d\n" + "Name\t: %s\n" + "Gender\t: %s\n" +
-                        "Designation\t\t: %s\n" + "Salary\t: %.2f\n",
+        System.out.printf("%d\t\t%s\t\t%s\t\t%s\t\t%.2f\n",
                 id, name, gender, designation, salary);
+    }
+
+    @Override
+    public void showRoleProperties() {
+        System.out.print("-------------------- Staffs Menu --------------------\n");
+        System.out.println("ID\tName\t\tDesignation\t\t\tGender\t\tSalary\n");
     }
 
     @Override

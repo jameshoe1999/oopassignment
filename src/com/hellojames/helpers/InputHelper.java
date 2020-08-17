@@ -1,5 +1,6 @@
 package com.hellojames.helpers;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputHelper {
@@ -18,5 +19,18 @@ public class InputHelper {
                 System.out.print("\nPlease provide a valid input: ");
             }
         }
+    }
+
+    public static int menuInput() {
+        while (true) {
+            try {
+                System.out.print("Enter the menu index or press zero to exit: ");
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Please provide integer-only value!");
+                scanner.nextLine();
+            }
+        }
+
     }
 }
